@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Flower Bank</title>
+  </head>
+  <body class="font-playwrite bg-gray-800">
+    <!-- active page links -->
+    <div
+      class="container mx-auto flex flex-wrap gap-x-1 px-4 pt-8 text-gray-300 transition-all"
+    >
+      <button
+        data__view="dashboard"
+        id="nav__item"
+        class="active border-main hover:bg-main my-2 flex cursor-pointer items-center justify-between rounded-lg border px-3 py-2 text-xs capitalize transition-colors hover:text-violet-400 lg:text-base"
+      >
+        <span
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="mx-1 size-5"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+            />
+          </svg> </span
+        >Dashboard
+      </button>
+      <button
+        data__view="add__money"
+        id="nav__item"
+        class="border-main hover:bg-main my-2 flex cursor-pointer items-center justify-between rounded-lg border px-3 py-2 text-xs capitalize transition-colors hover:text-violet-400 lg:text-base"
+      >
+        <span
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="mx-1 size-5"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            />
+          </svg>
+        </span>
+        Add money
+      </button>
+      <button
+        data__view="withdraw__money"
+        id="nav__item"
+        class="border-main hover:bg-main my-2 flex cursor-pointer items-center justify-between rounded-lg border px-3 py-2 text-xs capitalize transition-colors hover:text-violet-400 lg:text-base"
+      >
+        <span
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="mx-1 size-5"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            />
+          </svg>
+        </span>
+        Withdraw Money
+      </button>
+      <button
+        data__view="transaction__history"
+        id="nav__item"
+        class="border-main hover:bg-main my-2 flex cursor-pointer items-center justify-between rounded-lg border px-3 py-2 text-xs capitalize transition-colors hover:text-violet-400 lg:text-base"
+      >
+        <span
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="mx-1 size-5"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            />
+          </svg>
+        </span>
+        Transaction History
+      </button>
+    </div>
+
+    <!-- main content -->
+    <main>
+      <section id="dashboard" class="view active__view">
+        <div class="container mx-auto px-4 py-8">
+          <div class="mb-4 grid grid-cols-1 gap-y-4 md:grid-cols-3 md:gap-x-4">
+            <!-- left side -->
+            <div class="card col-span-2 flex items-start justify-between">
+              <!-- currency details -->
+              <div>
+                <p class="text-xl font-bold">Current Balance</p>
+                <h1
+                  id="current__money"
+                  class="my-4 text-3xl font-bold text-violet-400"
+                >
+                  00.00
+                </h1>
+                <span class="text-sm text-green-400"
+                  >12.5% increase from last month</span
+                >
+              </div>
+              <!-- currency icon -->
+              <div
+                class="bg-main flex size-12 items-center justify-center rounded-lg p-2 text-violet-400"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class=""
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m8.25 7.5.415-.207a.75.75 0 0 1 1.085.67V10.5m0 0h6m-6 0h-1.5m1.5 0v5.438c0 .354.161.697.473.865a3.751 3.751 0 0 0 5.452-2.553c.083-.409-.263-.75-.68-.75h-.745M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <!-- right side -->
+            <div class="card">
+              <p class="mb-2 text-xl font-bold">Account Summary</p>
+              <ul class="space-y-2 text-sm text-gray-300">
+                <li class="plus flex items-center justify-between">
+                  Monthly income <span>$3200.00</span>
+                </li>
+                <li class="minus flex items-center justify-between">
+                  Monthly expenses <span>$2300.00</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 gap-y-4 md:grid-cols-3 md:gap-x-4">
+            <!-- quick action  -->
+            <div class="card">
+              <p class="mb-4 font-bold">Quick Actions</p>
+              <!-- add money -->
+              <button
+                class="quick__btn"
+                data__view="add__money"
+                id="quick__btn"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="mx-1 size-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 4.5v15m7.5-7.5h-15"
+                  />
+                </svg>
+                App Money
+              </button>
+              <!-- withdraw money -->
+              <button
+                class="quick__btn"
+                data__view="withdraw__money"
+                id="quick__btn"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="mx-1 size-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 12h14"
+                  />
+                </svg>
+
+                Withdraw Money
+              </button>
+              <!-- transaction History -->
+              <button
+                class="quick__btn"
+                data__view="transaction__history"
+                id="quick__btn"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="mx-1 size-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"
+                  />
+                </svg>
+
+                Transaction History
+              </button>
+            </div>
+            <div class="card col-span-2">
+              <p class="mb-4 text-xl font-bold">Recent Transactions</p>
+              <ul class="space-y-2 text-sm text-gray-300">
+                <li class="transaction__li minus">
+                  <span
+                    >Withdraw <br />
+                    21-jun-25</span
+                  >
+                  <span> - $1000.00</span>
+                </li>
+                <li class="transaction__li minus">
+                  <span>
+                    Electricity Bill <br />
+                    05-jun-2025</span
+                  >
+                  <span> - $1300.00</span>
+                </li>
+                <li class="transaction__li plus">
+                  <span
+                    >Deposit <br />
+                    01-jun-25</span
+                  >
+                  <span> + $2500.00</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- add money card -->
+      <section id="add__money" class="view">
+        <div class="card mx-auto my-8 w-fit">
+          <form class="flex flex-col">
+            <h3 class="mb-2 text-center text-xl font-bold text-violet-400">
+              Add money
+            </h3>
+            <p class="mb-8 text-center">Deposit funds to your bank account</p>
+
+            <p class="mb-2 font-bold">Current Balance</p>
+            <h1
+              id="current__money"
+              class="mb-4 text-lg font-bold text-violet-400"
+            >
+              00.00
+            </h1>
+            <label class="flex flex-col gap-2">
+              <span class="text-sm text-gray-300">Amount to add</span>
+              <input
+                id="add__value"
+                type="number"
+                placeholder="$0.00"
+                class="border-main focus:border-main focus:ring-main mb-4 rounded-lg border bg-gray-800 p-2 text-sm text-violet-300 caret-violet-400 outline-0 focus:ring-1"
+              />
+            </label>
+            <button
+              id="add__btn"
+              type="submit"
+              class="bg-main flex cursor-pointer items-center justify-center rounded-lg px-4 py-2 font-bold text-violet-400 transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:text-violet-400 hover:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="mx-1 size-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+              </svg>
+              Add Money
+            </button>
+          </form>
+        </div>
+      </section>
+      <!-- withdraw money card -->
+      <section id="withdraw__money" class="view">
+        <div class="card mx-auto my-8 w-fit">
+          <form class="flex flex-col">
+            <h3 class="mb-2 text-center text-xl font-bold text-violet-400">
+              Withdraw money
+            </h3>
+            <p class="mb-8 text-center">Deposit funds to your bank account</p>
+
+            <p class="mb-2 font-bold">Current Balance</p>
+            <h1
+              id="current__money"
+              class="mb-4 text-lg font-bold text-violet-400"
+            >
+              00.00
+            </h1>
+            <label class="flex flex-col gap-2">
+              <span class="text-sm text-gray-300">Amount to Withdraw</span>
+              <input
+                type="number"
+                placeholder="$0.00"
+                class="border-main focus:border-main focus:ring-main mb-4 rounded-lg border bg-gray-800 p-2 text-sm text-violet-300 caret-violet-400 outline-0 focus:ring-1"
+              />
+            </label>
+            <button
+              id="withdraw__btn"
+              type="submit"
+              class="bg-main flex cursor-pointer items-center justify-center rounded-lg px-4 py-2 font-bold text-violet-400 transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:text-violet-400 hover:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1),0_2px_4px_-1px_rgba(0,0,0,0.06)]"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="mx-1 size-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+              </svg>
+              Withdraw Money
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- transaction history -->
+      <section id="transaction__history" class="view">
+        <div class="container mx-auto px-4 py-8">
+          <div class="card">
+            <h3 class="mb-4 text-center text-xl font-bold text-violet-400">
+              Transaction History
+            </h3>
+            <!-- list -->
+            <ul class="capitalize">
+              <li
+                class="text-bold flex justify-around border-b border-gray-700 py-2"
+              >
+                <p>date</p>
+
+                <p>Description</p>
+
+                <p>Type</p>
+
+                <p>Amount</p>
+              </li>
+
+              <li class="history__li">
+                <p><span>23</span><span>Jun ,</span>2025</p>
+                <p class="minus">manual</p>
+                <p class="minus__type">Withdrawal</p>
+                <p class="minus">-$1000.00</p>
+              </li>
+              <li class="history__li">
+                <p><span>23</span><span>Jun ,</span>2025</p>
+                <p class="minus">Electric Bill</p>
+                <p class="minus__type">Withdrawal</p>
+                <p class="minus">-$1300.00</p>
+              </li>
+              <li class="history__li">
+                <p><span>01</span><span>Jun ,</span>2025</p>
+                <p class="plus">Salary</p>
+                <p class="plus__type">Deposit</p>
+                <p class="plus">-$2500.00</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
